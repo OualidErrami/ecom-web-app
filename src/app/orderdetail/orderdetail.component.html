@@ -1,0 +1,42 @@
+<div class="container" *ngIf="orderdetails">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">order id:{{orderID}}</div>
+                <div class="card-body text-sm-start">
+                    <ul class="list-group">
+                        <li class="list-group-item">order ID: {{orderdetails.id}} </li>
+                        <li class="list-group-item">customer ID: {{orderdetails.customer.id}} </li>
+                        <li class="list-group-item">customer name: {{orderdetails.customer.name}} </li>
+                        <li class="list-group-item">customer email: {{orderdetails.customer.email}} </li>
+                        <li class="list-group-item">date: {{orderdetails.billingDate|date:"dd/MM/yyyy"}} </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="col-md6">
+        <div class="card">
+            <div class="card-header">Product items</div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead class="bg-dark text-white">
+                            <th>product id</th> <th>Product name</th> <th>Price</th> <th>Quantity</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pi of orderdetails.productItems">
+                            <td>{{pi.product.id}}</td>
+                            <td>{{pi.product.name}}</td>
+                            <td class="text-end">{{pi.product.price}}</td>
+                            <td class="text-end">{{pi.product.quantity}}</td>
+                        </tr>
+                        <tr class="bg-dark text-white">
+                            <td colspan="3" class="text-end">Total</td>
+                            <td class="text-end">{{orderdetails.total}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
